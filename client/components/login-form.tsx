@@ -36,7 +36,7 @@ const LoginForm = () => {
     setIsLoading(true);
     authClient.signIn.social({
       provider: "github",
-      callbackURL: "http://localhost:3000",
+      callbackURL: process.env.NEXT_PUBLIC_AUTH_CALLBACK_URL,
     });
   };
 
@@ -63,10 +63,10 @@ const LoginForm = () => {
 
         <div className="echo-animate space-y-2 text-center opacity-0">
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Welcome back to <span className="text-primary">Echo</span>
+            Welcome back to <span className="text-primary">Echoo</span>
           </h1>
           <p className="text-sm text-muted-foreground sm:text-base">
-            Authorize device flow to continue using Echo CLI
+            Authorize device flow to continue using Echoo CLI
           </p>
         </div>
 
@@ -103,7 +103,7 @@ const LoginForm = () => {
         </div>
 
         <p className="echo-animate text-center text-xs text-muted-foreground opacity-0">
-          Secure • Developer-first • Powered by Echo AI
+          Secure • Developer-first • Powered by Echoo AI
         </p>
       </div>
     </div>

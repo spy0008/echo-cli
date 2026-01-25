@@ -206,4 +206,9 @@ body {
     0 0 12px hsl(var(--primary) / 0.6);
 }
 
+@media (prefers-reduced-motion) {
+  .animate-cursor-blink {
+    animation: none;
+  }
+}
 

@@ -28,14 +28,12 @@ export default function Home() {
         <div className="absolute -bottom-40 -right-40 h-96 w-96 rounded-full bg-secondary/25 blur-3xl" />
       </div>
 
-
       <div className="relative z-10 w-full max-w-md">
         <div className="rounded-2xl border border-border/60 bg-card/70 backdrop-blur-xl shadow-xl p-6 sm:p-8 space-y-6">
-
           <div className="flex justify-center">
             <div className="relative">
               <img
-                src={data?.user?.image || "/vercel.svg"}
+                src={data?.user?.image || "/echo-1.svg"}
                 alt={data?.user?.name || "User"}
                 className="h-28 w-28 rounded-full object-cover border border-border"
               />
@@ -46,12 +44,10 @@ export default function Home() {
           <div className="text-center space-y-1">
             <h1 className="text-2xl font-bold tracking-tight">
               Welcome,{" "}
-              <span className="text-primary">
-                {data?.user?.name || "User"}
-              </span>
+              <span className="text-primary">{data?.user?.name || "User"}</span>
             </h1>
             <p className="text-sm text-muted-foreground">
-              Authenticated via Echo
+              Authenticated via Echoo
             </p>
           </div>
 
@@ -59,9 +55,7 @@ export default function Home() {
             <p className="text-xs uppercase tracking-wide text-muted-foreground">
               Email
             </p>
-            <p className="text-sm font-medium break-all">
-              {data?.user?.email}
-            </p>
+            <p className="text-sm font-medium break-all">{data?.user?.email}</p>
           </div>
 
           <Button
