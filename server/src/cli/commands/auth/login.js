@@ -12,8 +12,10 @@ import yoctoSpinner from "yocto-spinner";
 import chalk from "chalk";
 import open from "open";
 import {
+  clearStoredToken,
   getStoredToken,
   isTokenExpired,
+  requeredAuth,
   storeToken,
 } from "../../../lib/token.js";
 dotenv.config();
@@ -222,6 +224,67 @@ async function pollForToken(
   });
 }
 
+export async function logoutAction() {
+  intro(chalk.bold("Logout dude?"));
+
+  const token = await getStoredToken();
+
+  if (!token) {
+    console.log(chalk.yellow("You're not logged in."));
+    process.emit(0);
+  }
+
+  const shouldLogout = await confirm({
+    message: "Are you sure dude, you want to logout?",
+    initialValue: false,
+  });
+
+  if (isCancel(shouldLogout) || !shouldLogout) {
+    cancel("Logout cancelled");
+    process.emit(0);
+  }
+
+  const cleared = await clearStoredToken();
+
+  if (cleared) {
+    outro(chalk.greenBright("Successfully logged out!, see you leter dude."));
+  } else {
+    console.log(chalk.yellow("Could not clear token file."));
+  }
+}
+
+export async function whoamiAction() {
+  const token = await requeredAuth();
+
+  if (!token?.access_token) {
+    console.log("No access token found, Please login.");
+    process.emit(1);
+  }
+
+  const user = await prisma.user.findFirst({
+    where: {
+      sessions: {
+        some: {
+          token: token.access_token,
+        },
+      },
+    },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      image: true,
+    },
+  });
+
+  //output user session info
+  console.log(
+    chalk.bold.yellowBright(
+      `\n User: ${user.name} \n Email: ${user.email} \n ID: ${user.id}`,
+    ),
+  );
+}
+
 //COMMANDER SETUP --
 
 export const login = new Command("login")
@@ -229,3 +292,12 @@ export const login = new Command("login")
   .option("--server-url <url>", "The Better Auth Server URL", URL)
   .option("--client-id <id>", "The OAuth Client ID", CLIENT_ID)
   .action(loginAction);
+
+export const logout = new Command("logout")
+  .description("Logout and clear stored credentials.")
+  .action(logoutAction);
+
+export const whoami = new Command("whoami")
+  .description("Show current authenticated user.")
+  .option("--server-url <url>", "The Better Auth Server URL", URL)
+  .action(whoamiAction);
