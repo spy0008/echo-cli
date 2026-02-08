@@ -23,12 +23,12 @@ const LoginForm = () => {
 
     animate(
       items,
-      { opacity: [0, 1], y: [16, 0] },
+      { opacity: [0, 1], y: [16, 0] } as any,
       {
         delay: stagger(0.12),
         duration: 0.6,
         easing: "ease-out",
-      },
+      } as any,
     );
   }, []);
 
@@ -52,12 +52,12 @@ const LoginForm = () => {
         className="relative z-10 w-full max-w-md space-y-6"
       >
         <pre className="mx-auto w-fit rounded-xl border bg-card/60 px-4 py-3 text-xs text-primary backdrop-blur-md shadow-sm sm:text-sm font-mono">
-          {` ███████╗ ██████╗ ██╗  ██╗ ██████╗ 
- ██╔════╝██╔═══██╗██║  ██║██╔═══██╗
- █████╗  ██║   ██║███████║██║   ██║
- ██╔══╝  ██║   ██║██╔══██║██║   ██║
- ███████╗╚██████╔╝██║  ██║╚██████╔╝
- ╚══════╝ ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ `}
+          {` ███████╗ ██████╗ ██╗  ██╗ ██████╗  ██████╗ 
+ ██╔════╝██╔═══██╗██║  ██║██╔═══██╗██╔═══██╗
+ █████╗  ██║   ██║███████║██║   ██║██║   ██║
+ ██╔══╝  ██║   ██║██╔══██║██║   ██║██║   ██║
+ ███████╗╚██████╔╝██║  ██║╚██████╔╝╚██████╔╝
+ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ `}
           <span className="ml-1 inline-block h-4 w-0.5 align-middle bg-primary animate-cursor-blink shadow-cursor-glow" />
         </pre>
 
