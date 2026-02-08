@@ -6,6 +6,7 @@ import prisma from "../../../lib/db.js";
 import { select } from "@clack/prompts";
 import { startChat } from "../../chat/chatWithAI.js";
 import { startToolChat } from "../../chat/chatWithAI.tool.js";
+import { startAgentChat } from "../../chat/chatwithAI.agent.js";
 
 const wakeUpAction = async () => {
   const token = await getStoredToken();
@@ -75,7 +76,7 @@ const wakeUpAction = async () => {
       await startToolChat();
       break;
     case "agent":
-      console.log(chalk.yellow("Agentic mode coming soon"));
+      await startAgentChat();
       break;
   }
 };
