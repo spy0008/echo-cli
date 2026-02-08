@@ -1,19 +1,49 @@
 {
-  "name": "server",
+  "name": "echoo-cli",
   "version": "1.0.0",
-  "description": "",
-  "main": "src/index.js",
+  "description": "AI-powered CLI to generate full-stack applications with auth and device flow",
+  "type": "module",
+
   "bin": {
     "echoo": "./src/cli/main.js"
   },
+
+  "main": "src/index.js",
+
   "scripts": {
     "dev": "nodemon src/index.js",
     "start": "node src/index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "module",
+
+  "keywords": [
+    "cli",
+    "ai",
+    "generator",
+    "scaffold",
+    "auth",
+    "developer-tools"
+  ],
+
+  "author": "Naman Sompura",
+  "license": "MIT",
+
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spy0008/echo-cli"
+  },
+
+  "homepage": "https://echo-cli.vercel.app",
+
+  "files": [
+    "src",
+    "bin",
+    "README.md"
+  ],
+
+  "engines": {
+    "node": ">=18"
+  },
+
   "dependencies": {
     "@ai-sdk/google": "^3.0.20",
     "@clack/prompts": "^0.11.0",
@@ -29,10 +59,13 @@
     "figlet": "^1.10.0",
     "marked": "^15.0.12",
     "marked-terminal": "^7.3.0",
-    "nodemon": "^3.1.11",
     "open": "^11.0.0",
-    "prisma": "^6.19.0",
     "yocto-spinner": "^1.0.0",
     "zod": "^4.3.6"
+  },
+
+  "devDependencies": {
+    "nodemon": "^3.1.11",
+    "prisma": "^6.19.0"
   }
 }
